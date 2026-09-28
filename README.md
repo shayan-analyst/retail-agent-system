@@ -2,7 +2,7 @@
 ### Powered by Agentic AI
 
 A retail store automation platform run by a team of AI agents. Store staff chat with the system in English or Roman Urdu to check stock, record sales, raise purchase orders, answer customer questions, run promotions and read financial reports. The agents act on the real PostgreSQL database through tools, behind input and output guardrails.
-
+ 
 - **Backend:** FastAPI + PostgreSQL, agents built on the OpenAI Agents SDK (`openai-agents`)
 - **AI models:** free-tier, OpenAI-compatible providers (Groq, Gemini, OpenRouter) with automatic failover inside the backend
 - **Frontend:** Next.js + Tailwind CSS ("Aubergine & Ash" design)
