@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
-
+ 
 # Install exactly the versions in uv.lock (--frozen fails the build if the lock
 # is out of date with pyproject.toml); dev tools like pytest are left out.
 ENV UV_COMPILE_BYTECODE=1 \
