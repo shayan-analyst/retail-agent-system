@@ -25,8 +25,9 @@ const STORAGE_KEY = 'theme';
 /**
  * Inline script (rendered in <head> by app/layout.tsx) that applies the saved
  * theme before first paint, so there is no light-to-dark flash on reload.
+ * Light is always the default; dark applies only if the user chose it.
  */
-export const themeInitScript = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`;
+export const themeInitScript = `(function(){try{document.documentElement.classList.toggle('dark',localStorage.getItem('${STORAGE_KEY}')==='dark');}catch(e){}})();`;
 
 type ViewTransitionLike = { ready: Promise<void>; finished: Promise<void> };
 type DocWithVT = Document & { startViewTransition?: (cb: () => void) => ViewTransitionLike };
