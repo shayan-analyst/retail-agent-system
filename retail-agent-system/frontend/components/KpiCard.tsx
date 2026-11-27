@@ -65,15 +65,15 @@ export default function KpiCard({ title, value, subtitle, icon, color }: Props) 
   const display = useCountUp(value);
   return (
     <div
-      className={`glass group relative overflow-hidden rounded-2xl border bg-gradient-to-br to-transparent p-5 shadow-glass transition-all duration-300 hover:-translate-y-1 hover:shadow-glow animate-fade-up ${surfaceMap[color]}`}
+      className={`glass group relative overflow-hidden rounded-2xl border bg-gradient-to-br to-transparent p-3.5 sm:p-5 shadow-glass transition-all duration-300 hover:-translate-y-0.5 animate-fade-up ${surfaceMap[color]}`}
     >
-      <div className="mb-4 flex items-start justify-between">
+      <div className="mb-3 flex items-start justify-between sm:mb-4">
         <div className={`rounded-xl p-2.5 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 ${iconMap[color]}`}>
           {icon}
         </div>
       </div>
-      <div className={`mb-0.5 text-2xl font-bold tracking-tight ${valueMap[color]}`}>{display}</div>
-      <div className="text-sm font-medium text-ash-600">{title}</div>
+      <div className={`mb-0.5 text-lg font-bold sm:text-2xl tracking-tight ${valueMap[color]}`}>{display}</div>
+      <div className="text-xs font-medium text-ash-600 sm:text-sm">{title}</div>
       {subtitle && <div className="mt-1 text-xs text-ash-500">{subtitle}</div>}
     </div>
   );

@@ -115,17 +115,17 @@ export default function Navbar() {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="glass fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-ash-200 px-4 md:hidden">
+      <div className="glass fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-ash-200 px-3 md:hidden">
         <BrandMark />
-        <div className="flex items-center gap-1.5">
-          <ThemeToggle variant="icon" className="!h-9 !w-9" />
+        <div className="flex items-center gap-1">
+          <ThemeToggle variant="icon" className="!h-10 !w-10" />
           <UserMenu compact />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            className="grid h-9 w-9 place-items-center rounded-lg text-ash-700 hover:bg-brand-50"
+            className="grid h-10 w-10 place-items-center rounded-lg text-ash-700 hover:bg-brand-50"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -137,7 +137,7 @@ export default function Navbar() {
           type="button"
           aria-label="Close menu"
           onClick={() => setOpen(false)}
-          className="fixed inset-0 z-40 bg-ash-950/40 backdrop-blur-[2px] md:hidden"
+          className="fixed inset-0 z-40 bg-ash-950/40 md:hidden"
         />
       )}
 

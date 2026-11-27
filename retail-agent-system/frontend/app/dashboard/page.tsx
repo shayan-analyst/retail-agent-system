@@ -27,7 +27,7 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-ash-800">Dashboard</h1>
         <p className="text-sm text-ash-600 mt-1">
@@ -44,14 +44,14 @@ export default function DashboardPage() {
       )}
 
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="skeleton h-36" />
           ))}
         </div>
       ) : kpis ? (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
             <KpiCard
               title="Total Products"
               value={kpis.total_products}
@@ -83,7 +83,7 @@ export default function DashboardPage() {
           </div>
 
           {kpis.top_categories && kpis.top_categories.length > 0 && (
-            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
               <div className="flex items-center gap-2 mb-4">
                 <BarChart3 className="w-5 h-5 text-brand-700" />
                 <h2 className="text-base font-semibold text-ash-800">

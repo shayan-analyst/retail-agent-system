@@ -65,8 +65,8 @@ export default function InventoryPage() {
   useEffect(() => { load(); }, [page, category, searchTerm]);
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-ash-900">Inventory</h1>
           <p className="text-sm text-ash-600 mt-1">Manage products and stock levels</p>
@@ -144,7 +144,7 @@ export default function InventoryPage() {
         </div>
       )}
 
-      <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+      <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
         <ProductTable
           products={
             activeTab === 'all'

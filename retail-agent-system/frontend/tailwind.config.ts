@@ -42,7 +42,7 @@ const config: Config = {
       },
       boxShadow: {
         glass: '0 1px 2px rgb(var(--shadow) / 0.06), 0 12px 32px -16px rgb(var(--shadow) / 0.28)',
-        glow: '0 0 0 1px rgb(var(--brand-400) / 0.35), 0 8px 30px -8px rgb(var(--brand-500) / 0.55)',
+        glow: '0 1px 2px rgb(var(--shadow) / 0.14), 0 6px 14px -6px rgb(var(--brand-600) / 0.4)',
       },
       keyframes: {
         'fade-up': {
@@ -51,7 +51,7 @@ const config: Config = {
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'fade-up': 'fade-up 0.35s ease-out both',
       },
     },
   },

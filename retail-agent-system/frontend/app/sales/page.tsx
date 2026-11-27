@@ -185,9 +185,9 @@ export default function SalesDashboardPage() {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-ash-900">Sales Dashboard</h1>
           <p className="text-sm text-ash-600 mt-1">Live sales overview</p>
@@ -223,7 +223,7 @@ export default function SalesDashboardPage() {
       ) : (
         <>
           {/* KPI Cards — 6 cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4 mb-8">
             {kpiCards.map(({ label, value, sub, icon: Icon, bg, text, val }) => (
               <div
                 key={label}
@@ -244,7 +244,7 @@ export default function SalesDashboardPage() {
           {/* Row 2: Daily Revenue + Payment Method Pie */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* Daily Revenue with day-range dropdown */}
-            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-base font-semibold text-ash-800">Daily Revenue</h2>
                 <select
@@ -283,7 +283,7 @@ export default function SalesDashboardPage() {
             </div>
 
             {/* Payment Method Pie */}
-            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
               <h2 className="text-base font-semibold text-ash-800 mb-4">Payment Methods</h2>
               {!profitSummary?.payment_breakdown?.length ? (
                 <div className="flex items-center justify-center h-48 text-ash-500 text-sm">No data</div>
@@ -318,7 +318,7 @@ export default function SalesDashboardPage() {
           {/* Row 3: Category Revenue + Top Products */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* Category Revenue horizontal bar */}
-            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
               <h2 className="text-base font-semibold text-ash-800 mb-4">Revenue by Category</h2>
               {categories.length === 0 ? (
                 <div className="flex items-center justify-center h-48 text-ash-500 text-sm">No data</div>
@@ -338,7 +338,7 @@ export default function SalesDashboardPage() {
             </div>
 
             {/* Top Selling Products */}
-            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+            <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Package className="w-4 h-4 text-ash-600" />
@@ -382,7 +382,7 @@ export default function SalesDashboardPage() {
           </div>
 
           {/* Recent Transactions with payment method filter */}
-          <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+          <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-semibold text-ash-800">Recent Transactions</h2>
               <div className="flex gap-1">

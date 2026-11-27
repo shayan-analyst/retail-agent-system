@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
 import Topbar from '@/components/Topbar';
+import TableLabels from '@/components/TableLabels';
 import { Loader2 } from 'lucide-react';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -26,8 +27,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   if (!token) return null;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-[100dvh]">
       <Navbar />
+      <TableLabels />
       {/* pt-14 clears the mobile top bar; overflow-x-clip keeps the desktop
           top bar sticky (a scrolling container would break `position: sticky`). */}
       <main className="flex min-w-0 flex-1 flex-col overflow-x-clip pt-14 md:pt-0">

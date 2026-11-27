@@ -54,7 +54,7 @@ export default function UserMenu({ compact = false }: { compact?: boolean }) {
       {open && (
         <div
           role="menu"
-          className="animate-fade-up absolute right-0 top-full z-50 mt-2 w-60 overflow-hidden rounded-2xl border border-ash-200 bg-surface/95 p-1.5 shadow-glass backdrop-blur-xl"
+          className="animate-fade-up absolute right-0 top-full z-50 mt-2 w-60 overflow-hidden rounded-2xl border border-ash-200 bg-surface p-1.5 shadow-glass"
         >
           <div className="px-3 pb-2.5 pt-2">
             <div className="truncate text-sm font-semibold text-ash-900">{user.username}</div>

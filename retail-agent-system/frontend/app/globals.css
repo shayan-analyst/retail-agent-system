@@ -41,13 +41,7 @@
   --surface-rgb: 255 255 255; /* alias for CSS modules that redefine --surface */
   --shadow: 16 68 43;
 
-  --page-from: 236 248 240;
-  --page-via: 246 251 247;
-  --page-to: 226 243 233;
-  --glow-a: 88 185 127;
-  --glow-b: 190 232 160;
-
-  --glass-alpha: 0.52;
+  --page-bg: 243 247 244;
 
   /* chart helpers (full colours, used by recharts props) */
   --chart-grid: #dbe8df;
@@ -85,17 +79,11 @@
   --ash-900: 240 248 243;
   --ash-950: 248 252 250;
 
-  --surface: 15 42 31;
-  --surface-rgb: 15 42 31;
+  --surface: 16 46 34;
+  --surface-rgb: 16 46 34;
   --shadow: 0 0 0;
 
-  --page-from: 9 30 22;
-  --page-via: 12 38 28;
-  --page-to: 8 26 19;
-  --glow-a: 40 150 95;
-  --glow-b: 20 110 80;
-
-  --glass-alpha: 0.46;
+  --page-bg: 10 33 24;
 
   --chart-grid: #1f4535;
   --chart-axis: #a9cdb9;
@@ -114,18 +102,12 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(var(--ash-900));
-  background-color: rgb(var(--page-via));
-  background-image:
-    radial-gradient(rgb(var(--brand-600) / 0.07) 1px, transparent 1.2px),
-    radial-gradient(60rem 40rem at 8% -10%, rgb(var(--glow-a) / 0.22), transparent 60%),
-    radial-gradient(50rem 36rem at 100% 0%, rgb(var(--glow-b) / 0.2), transparent 60%),
-    linear-gradient(160deg, rgb(var(--page-from)), rgb(var(--page-via)) 45%, rgb(var(--page-to)));
-  background-size: 24px 24px, auto, auto, auto;
-  background-attachment: fixed;
+  background-color: rgb(var(--page-bg));
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
@@ -163,15 +145,10 @@ body {
     stroke 0.3s ease;
 }
 
-/* Glass surface: used by cards / panels so the canvas shows through. */
+/* Card / panel surface: solid and flat. (Class name kept from the earlier
+   translucent design so no page needs touching.) */
 .glass {
-  background-color: rgb(var(--surface) / var(--glass-alpha));
-  -webkit-backdrop-filter: blur(9px) saturate(150%);
-  backdrop-filter: blur(9px) saturate(150%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
-}
-.dark .glass {
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  background-color: rgb(var(--surface));
 }
 
 /* ============================================================
@@ -235,10 +212,10 @@ body {
    Motion
    ============================================================ */
 @keyframes page-in {
-  from { opacity: 0; transform: translateY(14px) scale(0.995); filter: blur(3px); }
-  to   { opacity: 1; transform: none; filter: none; }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
 }
-.animate-page { animation: page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-page { animation: page-in 0.3s ease-out both; }
 
 /* progress / ranking bars grow in from the left */
 @keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -295,3 +272,66 @@ html.theme-switching *::after {
 /* A list that can scroll on very short screens but never shows a scrollbar. */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+
+/* ============================================================
+   Phones (<768px): comfortable touch targets, no iOS input zoom,
+   tables shown as stacked cards. Desktop is untouched.
+   ============================================================ */
+@media (max-width: 767px) {
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  main button { min-width: 44px; }
+  main button,
+  main select,
+  main input:not([type='checkbox']):not([type='radio']) {
+    min-height: 44px;
+  }
+  main .glass button[aria-label],
+  main a { min-height: 0; }
+  nav[aria-label='Primary'] a { min-height: 44px; }
+
+  /* tables → cards */
+  main table, main table tbody, main table tr, main table td { display: block; width: 100%; }
+  main table thead { display: none; }
+  main table tbody tr {
+    border: 1px solid rgb(var(--ash-200) / 0.8);
+    border-radius: 14px;
+    padding: 6px 14px;
+    margin-bottom: 10px;
+    background: rgb(var(--surface));
+  }
+  main table tbody tr:hover { background-color: rgb(var(--surface)); }
+  main table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0 !important;
+    text-align: right;
+    max-width: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    border-bottom: 1px solid rgb(var(--ash-100));
+    word-break: break-word;
+  }
+  main table td:last-child { border-bottom: 0; }
+  main table td[data-label]:not([data-label=''])::before {
+    content: attr(data-label);
+    flex: none;
+    max-width: 45%;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgb(var(--ash-500));
+  }
+  main table td:empty { display: none; }
+  main table td[colspan] { justify-content: center; text-align: center; }
+  main .overflow-x-auto { overflow-x: visible; }
+}

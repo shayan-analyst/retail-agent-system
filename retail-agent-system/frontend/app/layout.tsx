@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider, themeInitScript } from '@/components/ThemeProvider';
-import RetailCanvas from '@/components/RetailCanvas';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
@@ -21,11 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>
-          {/* Interactive 3D retail-products background, shared by every page. */}
-          <RetailCanvas />
-          <div className="relative z-10">
-            <AuthProvider>{children}</AuthProvider>
-          </div>
+          <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </body>
     </html>

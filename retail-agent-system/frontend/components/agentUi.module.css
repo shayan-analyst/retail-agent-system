@@ -6,7 +6,7 @@
 
 .root {
   --bg: transparent;                 /* the shared canvas shows through */
-  --surface: rgb(var(--surface-rgb, 255 255 255) / 0.82);
+  --surface: rgb(var(--surface-rgb, 255 255 255));
   --line: rgb(var(--ash-200));
   --line-soft: rgb(var(--ash-100));
   --ink: rgb(var(--ash-900));
@@ -27,7 +27,7 @@
   flex-direction: column;
   /* AppShell's <main> sits in a min-h-screen flex row, so a percentage
      height has nothing to resolve against — pin to the viewport. */
-  height: calc(100vh - 56px);
+  height: calc(100dvh - 56px);
   height: calc(100dvh - 56px);
   min-height: 0;
   background: var(--bg);
@@ -201,8 +201,6 @@
   border: 1px solid var(--line);
   border-radius: 26px;
   box-shadow: 0 1px 2px rgb(var(--shadow) / 0.06), 0 14px 34px -18px rgb(var(--shadow) / 0.3);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   transition: border-color 0.2s ease, box-shadow 0.25s ease;
 }
 .composer:focus-within {
@@ -293,8 +291,6 @@
 }
 
 /* glass panels so the retail canvas stays visible behind the chat */
-.header { -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
-.bubble { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 
 /* mobile top bar in the app shell is 56px tall */
 @media (max-width: 767px) {

@@ -57,8 +57,8 @@ export default function ComplaintsPage() {
   };
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-ash-900">Complaints</h1>
           <p className="text-sm text-ash-600 mt-1">Customer complaints — resolving sends email automatically</p>
@@ -73,7 +73,7 @@ export default function ComplaintsPage() {
       </div>
 
       {/* Status filter */}
-      <div className="flex gap-2 mb-5">
+      <div className="flex flex-wrap gap-2 mb-5">
         {['', ...STATUS_OPTIONS].map((s) => (
           <button
             key={s || 'all'}
@@ -89,7 +89,7 @@ export default function ComplaintsPage() {
         ))}
       </div>
 
-      <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-6 animate-fade-up">
+      <div className="glass rounded-2xl border border-ash-200/70 shadow-glass p-4 sm:p-6 animate-fade-up">
         {loading ? (
           <div className="flex items-center justify-center h-40 text-ash-500 text-sm">Loading complaints...</div>
         ) : complaints.length === 0 ? (
